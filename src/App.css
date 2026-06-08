@@ -1,5 +1,25 @@
 /* App.css */
 
+.header-with-logout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logout-button {
+  padding: 8px 12px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.logout-button:hover {
+  background-color: #0056b3;
+}
+
+
 body {
   background-color: #f0f2f5;
   font-family: 'Segoe UI', sans-serif;
