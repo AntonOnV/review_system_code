@@ -2,6 +2,21 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Backend setup
+
+Python dependencies are installed in the project-local `.venv` directory:
+
+```sh
+source .venv/bin/activate
+pip install -r requirements.txt
+python server/app.py
+```
+
+Copy `.env.example` to `.env` when setting up a new checkout, then set `MONGO_URI`
+to a MongoDB URI that includes the database name (for example,
+`mongodb://localhost:27017/review_system`). The Flask backend and React frontend
+both load their runtime configuration from the root `.env` file.
+
 ## Available Scripts
 
 In the project directory, you can run:

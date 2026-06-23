@@ -1,0 +1,53 @@
+{
+  "language": { "label": "Language", "english": "English", "ukrainian": "Ukrainian" },
+  "brand": { "eyebrow": "REVIEW INTELLIGENCE", "title": "Restaurant insights" },
+  "auth": {
+    "badge": "Member access",
+    "title": "Welcome",
+    "description": "Sign in to publish reviews and explore restaurant recommendations.",
+    "email": "Email address",
+    "password": "Password",
+    "login": "Login",
+    "register": "Create account",
+    "loginFailed": "Login failed. Check your email and password.",
+    "registered": "Account created. You can log in now.",
+    "registrationFailed": "Registration failed. This email may already be registered."
+  },
+  "actions": { "logout": "Logout", "submit": "Submit review" },
+  "navigation": { "overview": "Overview", "reviews": "Reviews" },
+  "reviewForm": {
+    "title": "Share a review",
+    "description": "Your feedback is analyzed automatically to identify its sentiment.",
+    "restaurantId": "Restaurant ID",
+    "restaurantPlaceholder": "e.g. restaurant_1",
+    "review": "Your review",
+    "reviewPlaceholder": "What stood out about your experience?",
+    "required": "Please fill in all fields.",
+    "submitted": "Review added. Detected sentiment: $t(sentiment.{{sentiment}}).",
+    "failed": "The review could not be submitted. Please try again."
+  },
+  "recommendations": {
+    "title": "Top recommendations",
+    "description": "Ranked by the share of positive reviews.",
+    "empty": "Recommendations will appear after reviews are submitted.",
+    "ratingLabel": "{{percent}} percent positive"
+  },
+  "stats": {
+    "title": "Overall positivity",
+    "positive": "positive",
+    "positiveCount": "{{count}} positive",
+    "negativeCount": "{{count}} negative",
+    "totalCount": "{{count}} total"
+  },
+  "history": {
+    "title": "Review history",
+    "description_one": "{{count}} review collected so far.",
+    "description_other": "{{count}} reviews collected so far.",
+    "emptyTitle": "No reviews yet",
+    "emptyDescription": "Submit the first review to start the history.",
+    "restaurant": "Restaurant",
+    "review": "Review",
+    "sentiment": "Sentiment"
+  },
+  "sentiment": { "positive": "positive", "negative": "negative", "neutral": "neutral" }
+}

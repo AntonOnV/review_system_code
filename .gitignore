@@ -11,6 +11,15 @@
 # production
 /build
 
+# Python
+/.venv/
+__pycache__/
+*.py[cod]
+
+# Local environment (keep the documented template)
+/.env
+!/.env.example
+
 # misc
 .DS_Store
 .env.local

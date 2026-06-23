@@ -1,25 +1,31 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
-from pymongo import MongoClient
+from flask_pymongo import PyMongo
 from werkzeug.security import generate_password_hash, check_password_hash
-from bson import ObjectId
 from textblob import TextBlob
 import datetime
+import os
+from pathlib import Path
+
+from dotenv import load_dotenv
+
+
+load_dotenv(Path(__file__).resolve().parent.parent / '.env')
 
 app = Flask(__name__)
 CORS(app)
 
 # JWT конфігурація
-app.config['JWT_SECRET_KEY'] = 'super-secret-key'  # змінити на щось надійне
+app.config['JWT_SECRET_KEY'] = os.environ['JWT_SECRET_KEY']
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = datetime.timedelta(days=1)
 jwt = JWTManager(app)
 
 # Підключення до MongoDB
-client = MongoClient('mongodb://localhost:27017/')
-db = client['review_system']
-reviews_collection = db['reviews']
-users_collection = db['users']
+app.config['MONGO_URI'] = os.environ['MONGO_URI']
+mongo = PyMongo(app)
+reviews_collection = mongo.db.reviews
+users_collection = mongo.db.users
 
 # Аналіз тональності
 
@@ -41,7 +47,7 @@ def register():
     password = data.get('password')
     if users_collection.find_one({'email': email}):
         return jsonify({'error': 'User already exists'}), 409
-    hashed = generate_password_hash(password)
+    hashed = generate_password_hash(password, method='pbkdf2:sha256')
     users_collection.insert_one({'email': email, 'password': hashed})
     return jsonify({'message': 'User registered successfully'})
 
@@ -116,4 +122,7 @@ def get_stats():
     return jsonify({'average': average, 'positive': positives, 'negative': negatives})
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(
+        debug=os.getenv('FLASK_DEBUG', 'false').lower() == 'true',
+        port=int(os.getenv('FLASK_PORT', '5000')),
+    )
